@@ -1,0 +1,20 @@
+<h1>Registro</h1>
+
+<%= form_with(model: @usuario) do |formulario| %>
+    <div class=mb-3>
+        <%= formulario.label      :nombre_usuario %>
+        <%= formulario.text_field :nombre_usuario %>
+    </div>
+
+    <div class=mb-3>
+        <%= formulario.label          :password %>
+        <%= formulario.password_field :password %>
+    </div>
+
+   <div class=mb-3>
+        <%= formulario.label          :password_confirmation %>
+        <%= formulario.password_field :password_confirmation %>
+    </div>
+    <%= formulario.submit %>
+
+<% end %>
