@@ -3,6 +3,11 @@ class UsuariosController <ApplicationController
     
     before_action :buscar_usuario, only: [:mostrar, :editar, :actualizar, :eliminar]
 
+    #GET /usuarios
+    def listar
+        @usuario = Usuario.<all
+    end
+
     #GET /usuarios/nuevo
     def crear
         @usuario = Usuario.new
@@ -47,9 +52,13 @@ class UsuariosController <ApplicationController
         end
         redirect_to nuevo_usuario_path
     end
-
+    
     private 
     def params_usuario #devuelve la lista de datos del formulario en HASH
         return params.require(:usuario).permit(:nombre_usuario, :password, :password_confirmation)
+    end
+
+    def buscar_usuario
+        @usuario = Usuario.find(params[:id])
     end
 end
